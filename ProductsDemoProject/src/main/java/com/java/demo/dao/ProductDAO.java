@@ -23,7 +23,7 @@ public class ProductDAO {
 	      } finally {
 	    	  xeConSession.close(); 
 	      }
-		return deptDoObj;
+		return productDoObj;
 		}
 	
 	 /* Method to CREATE a new shoe in the database */
@@ -34,7 +34,7 @@ public class ProductDAO {
 	      try {
 	 		 tx = xeConSession.beginTransaction();
 	         ProductDO shoe = new ProductDO(shoeName, shoeDesc, shoePolish);
-	         deptID = (Integer) xeConSession.save(shoe);
+	         productID = (Integer) xeConSession.save(shoe);
 	         tx.commit();
 	      } catch (HibernateException e) {
 		         if (tx!=null) tx.rollback();
@@ -68,7 +68,7 @@ public class ProductDAO {
 }
 	   
 	   /* Method to DELETE shoe */
-	   public boolean updateDepartment(Integer shoeId){
+	   public boolean deleteShoe(Integer shoeId){
 		   Transaction tx = null;
 		   boolean updated = false;
 		  Session xeConSession = xeConSessionFactory.openSession();
